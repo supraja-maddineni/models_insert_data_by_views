@@ -13,9 +13,10 @@ def insert_Webpage(request):
     tn=input('enter Topic_name: ')
     name=input('enter name: ')
     url=input('enter url: ')
+    email=input('enter email: ')
     TO=Topic.objects.get_or_create(topic_name=tn)[0]
     TO.save()
-    WO=Webpage.objects.get_or_create(topic_name=TO,name=name,url=url)[0]
+    WO=Webpage.objects.get_or_create(topic_name=TO,name=name,url=url,email=email)[0]
     WO.save()
     return HttpResponse('Webpage Data Inserted Successfully')
 
@@ -27,7 +28,7 @@ def insert_AccessRecord(request):
     date=input('enter date: ')
     TO=Topic.objects.get_or_create(topic_name=tn)[0]
     TO.save()
-    WO=Webpage.objects.get_or_create(topic_name=TO,name=name,url=url)[0]
+    WO=Webpage.objects.get_or_create(topic_name=TO,name=name,url=url,email=email)[0]
     WO.save()
     AO=AccessRecord.objects.get_or_create(name=WO,author=author,date=date)[0]
     AO.save()
